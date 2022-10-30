@@ -20,7 +20,7 @@ pipeline {
             steps {  
                    
 
-                    sh 'docker build . -t node-app:$BUILD_NUMBER'
+                    sh ' sudo docker build . -t node-app:$BUILD_NUMBER'
             }
 
         } 
@@ -56,8 +56,8 @@ pipeline {
             
             steps { 
 
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-                sh 'docker run -d -p 3000:3000  node-app:$BUILD_NUMBER '
+                sh "sudo docker rmi $registry:$BUILD_NUMBER" 
+                sh 'sudo docker run -d -p 3000:3000  node-app:$BUILD_NUMBER '
             }
         }
             
