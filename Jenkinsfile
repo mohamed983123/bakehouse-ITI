@@ -65,10 +65,13 @@ pipeline {
             when{ expression {params.choice == 'both' | params.choice == 'Deploy'}}  
                   steps {
                     withCredentials(file(credentialsId: 'config', variable: 'config')
+                  {                   
              
                     sh "cd Deployment"
                     sh  "kubectl apply -f deploy.yaml --kubeconfig $config"
                     sh  "kubectl apply -f service.yaml --kubeconfig $config"
+                   
+                  } 
             }
             
          
