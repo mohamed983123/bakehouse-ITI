@@ -18,10 +18,8 @@ pipeline {
             
 
             steps {  
-                   sh 'groupadd docker'
-                   sh 'usermod -aG docker ${USER}'
                    
-
+                   
                     sh 'docker build . -t node-app:$BUILD_NUMBER'
             }
 
