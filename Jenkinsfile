@@ -64,10 +64,12 @@ pipeline {
         stage('Deploy  Application') {
              
                 
-            steps { 
+            steps {
+             withCredentials(file(credentialsId: 'config', variable: 'config'),
+             
                 sh "cd Deployment"
-                sh  "kubectl apply -f deploy.yaml"
-                sh  "kubectl apply -f service.yaml"
+                sh  "kubectl apply -f deploy.yaml --kubeconfig $config"
+                sh  "kubectl apply -f service.yaml --kubeconfig $config"
             }
         } 
     }
