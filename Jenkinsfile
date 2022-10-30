@@ -17,7 +17,7 @@ pipeline {
             
             
             steps { 
-                     withCredentials(file(credentialsId: 'config', variable: 'config'))
+                     withCredentials([file(credentialsId: 'config', variable: 'config')])
                   {                   
              
                     sh "cd Deployment"
