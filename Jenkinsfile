@@ -64,7 +64,7 @@ pipeline {
         stage('Deploy  Application') {
             when{ expression {params.choice == 'both' | params.choice == 'Deploy'}}  
                   steps {
-                    withCredentials(file(credentialsId: 'config', variable: 'config')
+                    withCredentials(file(credentialsId: 'config', variable: 'config'))
                   {                   
              
                     sh "cd Deployment"
