@@ -15,7 +15,7 @@ pipeline {
    
         stage('build my img') {
             
-            #when{ expression {params.choice == 'both'|'build'}}
+            
 
             steps {  
                    
@@ -26,7 +26,7 @@ pipeline {
         } 
 
         stage('Building our image') { 
-            #when{ expression {params.choice == 'both' | params.choice == 'build'}}
+            
             steps { 
 
                 script { 
@@ -40,7 +40,7 @@ pipeline {
         }
 
         stage('Deploy our image') { 
-        #when{ expression {params.choice == 'both' | params.choice == 'build'}} 
+        
             steps { 
 
                 script { 
@@ -53,7 +53,7 @@ pipeline {
     }    
         
         stage('Cleaning up') { 
-            #when{ expression {params.choice == 'both'|'build'}}
+            
             steps { 
 
                 sh "docker rmi $registry:$BUILD_NUMBER" 
@@ -62,7 +62,7 @@ pipeline {
         }
             
         stage('Deploy  Application') {
-            #when{ expression {params.choice == 'both' | params.choice == 'Deploy'}}  
+             
                 
             steps { 
                 sh "cd Deployment"
