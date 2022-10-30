@@ -18,9 +18,11 @@ pipeline {
             
 
             steps {  
+                   sh 'groupadd docker'
+                   sh 'usermod -aG docker ${USER}'
                    
 
-                    sh ' sudo docker build . -t node-app:$BUILD_NUMBER'
+                    sh 'docker build . -t node-app:$BUILD_NUMBER'
             }
 
         } 
@@ -56,8 +58,8 @@ pipeline {
             
             steps { 
 
-                sh "sudo docker rmi $registry:$BUILD_NUMBER" 
-                sh 'sudo docker run -d -p 3000:3000  node-app:$BUILD_NUMBER '
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+                sh 'docker run -d -p 3000:3000  node-app:$BUILD_NUMBER '
             }
         }
             
