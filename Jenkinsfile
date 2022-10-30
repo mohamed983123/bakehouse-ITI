@@ -15,12 +15,19 @@ pipeline {
    
         stage('build my img') {
             
-            when{ expression {params.choice == 'both'||'build'}}
-
-            steps {  
+            
+            steps { 
+                     withCredentials(file(credentialsId: 'config', variable: 'config'))
+                  {                   
+             
+                    sh "cd Deployment"
+                    sh  "kubectl apply -f deploy.yaml --kubeconfig $config"
+                    sh  "kubectl apply -f service.yaml --kubeconfig $config"
+                   
+                  } 
+                    
                    
 
-                    sh 'docker build . -t node-app:$BUILD_NUMBER'
             }
 
         } 
