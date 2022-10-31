@@ -41,7 +41,7 @@ pipeline {
     }    
         
         stage('Cleaning up') { 
-            when{ expression {params.choice == 'both'|'build'}}
+            when{ expression {params.choice == 'both' || params.choice == 'build'}}
             steps { 
 
                 sh "docker rmi $registry:$BUILD_NUMBER" 
