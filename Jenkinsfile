@@ -57,7 +57,6 @@ pipeline {
              
                     sh "cd Deployment"
                     sh  "cat Deployment/deploy.yaml | envsubst > myfile && mv myfile Deployment/deploy.yaml"
-                    sh  "cat Deployment/service.yaml | envsubst > myfile2 && mv myfile2 Deployment/service.yaml"
                     sh  "kubectl apply -f Deployment/deploy.yaml --kubeconfig $config"
                     sh  "kubectl apply -f Deployment/service.yaml --kubeconfig $config"
                    
